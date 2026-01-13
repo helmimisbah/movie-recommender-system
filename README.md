@@ -95,36 +95,6 @@ Where:
 
 ---
 
-## 🧱 System Architecture
-
-Raw Data
-├── ratings.csv
-└── movies.csv
-|
-v
-Preprocessing
-├── ratings_for_cf.parquet
-└── movie metadata
-|
-v
-+----------------------+ +-------------------------+
-| Collaborative | | Content-Based |
-| Filtering (ALS) | | (TF-IDF + Cosine) |
-| - Sparse CSR Matrix | | - On-the-fly similarity |
-+----------+-----------+ +-----------+-------------+
-| |
-| CF candidates | Similar items
-v v
-+---------------------+
-| Hybrid Recommender |
-| Weighted Scoring |
-+----------+----------+
-|
-v
-Top-N Recommendations
-
----
-
 ## ⚙️ Key Engineering Decisions
 
 - Avoided full user–item and similarity matrices to prevent memory issues
